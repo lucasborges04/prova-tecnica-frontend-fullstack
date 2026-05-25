@@ -69,3 +69,11 @@ O sistema consome a API fornecida pela empresa para validar:
 - Organização de frontend
 - Fluxo de autenticação completo
 - Boas práticas de desenvolvimento
+
+# Tecnologias Utilizadas
+
+- **React.js** (com Vite para build ultrarrápido)
+- **JavaScript** (ES6+)
+- **React Router DOM** (Navegação SPA e proteção de rotas privadas)
+- **Axios** (Cliente HTTP com interceptors configurados)
+- **Context API** (Gerenciamento de estado global de autenticação)
