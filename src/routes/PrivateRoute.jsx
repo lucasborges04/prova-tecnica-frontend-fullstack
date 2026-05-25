@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 
-// Este componente "abraça" as rotas que precisam de proteção
 export function PrivateRoute({ children }) {
   const { isAuthenticated } = useContext(AuthContext);
 

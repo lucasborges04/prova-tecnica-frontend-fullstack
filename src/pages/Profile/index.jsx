@@ -11,14 +11,11 @@ export function Profile() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // O useEffect busca os dados assim que a tela abre
   useEffect(() => {
     async function fetchProfile() {
       try {
         const data = await getUserProfile();
 
-        // Vamos guardar os dados do usuário. Ajuste "data.data" dependendo de
-        // como a API envia a resposta exata (ex: response.data.data.nome)
         setUserData(data.data || data);
       } catch (err) {
         setError(err.message);
@@ -30,10 +27,9 @@ export function Profile() {
     fetchProfile();
   }, []);
 
-  // Função para lidar com o clique no botão "Sair"
   function handleLogout() {
-    signOut(); // Limpa o localStorage e o estado de autenticação
-    navigate("/login"); // Manda de volta pro login
+    signOut();
+    navigate("/login");
   }
 
   if (loading) {

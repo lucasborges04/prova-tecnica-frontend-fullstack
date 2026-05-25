@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // Adicionado useLocation
+import { useNavigate, useLocation } from "react-router-dom";
 import { sendVerificationCode } from "../../services/authService";
 
 export function VerifyEmail() {
   const navigate = useNavigate();
-  const location = useLocation(); // Captura a "bagagem" da rota anterior
+  const location = useLocation();
 
-  // Se veio um e-mail lá do cadastro, usamos ele como valor inicial do estado
+  // Se veio um e-mail lá do cadastro, ele é passado como valor inicial do estado
   const emailVindoDoCadastro = location.state?.email || "";
 
   const [email, setEmail] = useState(emailVindoDoCadastro);
@@ -26,7 +26,6 @@ export function VerifyEmail() {
 
       await sendVerificationCode(email);
 
-      // Redireciona para a tela de validação passando o e-mail adiante
       navigate("/validate-code", { state: { email } });
     } catch (err) {
       setError(err.message);

@@ -34,7 +34,6 @@ export function ForgotPassword() {
         type: "success",
         text: "Código enviado! Verifique seu e-mail.",
       });
-      // Avança para a próxima etapa na tela
       setStep(2);
     } catch (err) {
       setFeedback({ type: "error", text: err.message });
@@ -43,7 +42,6 @@ export function ForgotPassword() {
     }
   }
 
-  // Função da Etapa 2
   async function handleResetPassword(e) {
     e.preventDefault();
     if (senha.length < 8) {
@@ -63,7 +61,6 @@ export function ForgotPassword() {
         text: "Senha alterada com sucesso! Redirecionando...",
       });
 
-      // Envia o usuário para o login após 2 segundos
       setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
       setFeedback({ type: "error", text: err.message });
@@ -95,7 +92,6 @@ export function ForgotPassword() {
         </p>
       )}
 
-      {/* Renderização Condicional: Mostra este formulário apenas na Etapa 1 */}
       {step === 1 && (
         <form
           onSubmit={handleRequestCode}
@@ -117,7 +113,6 @@ export function ForgotPassword() {
         </form>
       )}
 
-      {/* Renderização Condicional: Mostra este formulário apenas na Etapa 2 */}
       {step === 2 && (
         <form
           onSubmit={handleResetPassword}

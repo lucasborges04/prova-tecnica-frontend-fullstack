@@ -6,7 +6,6 @@ export function ValidateCode() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Capturamos o e-mail invisível que veio da outra tela
   const emailOculto = location.state?.email;
 
   const [codigo, setCodigo] = useState("");
@@ -16,7 +15,6 @@ export function ValidateCode() {
   async function handleValidate(e) {
     e.preventDefault();
 
-    // Trava de segurança: se não tem e-mail oculto, não deixamos prosseguir
     if (!emailOculto) {
       setFeedback({
         type: "error",
@@ -34,7 +32,7 @@ export function ValidateCode() {
       setLoading(true);
       setFeedback({ type: "", text: "" });
 
-      // Enviamos o e-mail oculto e o código digitado para a API, cumprindo a exigência
+      // Envia e-mail oculto e o código digitado para a API, cumprindo a exigência
       await validateCode(emailOculto, codigo);
 
       setFeedback({
@@ -64,7 +62,6 @@ export function ValidateCode() {
         Insira o código de 6 dígitos enviado para o seu e-mail.
       </p>
 
-      {/* Se não tivermos o e-mail oculto, mostramos um aviso logo de cara */}
       {!emailOculto && (
         <div
           style={{

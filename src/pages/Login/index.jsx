@@ -4,7 +4,6 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export function Login() {
   const navigate = useNavigate();
-  // Usamos o hook useContext para "puxar" a função signIn lá do nosso AuthContext
   const { signIn } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
@@ -26,7 +25,6 @@ export function Login() {
       // Chama a função do Contexto (que faz o serviço e salva o token)
       await signIn(email, senha);
 
-      // Se deu tudo certo, redireciona para a rota do perfil (que criaremos em seguida)
       navigate("/me");
     } catch (err) {
       setError(err.message);

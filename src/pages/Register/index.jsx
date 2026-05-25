@@ -11,12 +11,10 @@ export function Register() {
     senha: "",
   });
 
-  // Estados para feedback visual
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Função que atualiza o estado conforme o usuário digita
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -50,7 +48,7 @@ export function Register() {
         navigate("/send-code", { state: { email: formData.email } });
       }, 2000);
     } catch (err) {
-      setError(err.message); // Exibe a mensagem de erro que traduzimos no authService
+      setError(err.message);
     } finally {
       setLoading(false);
     }
